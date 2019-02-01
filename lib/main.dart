@@ -156,9 +156,8 @@ class PlayerBody extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(6.0),
-              child: RaisedButton(
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(15.0)),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
                 child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height/2 +50.0,
@@ -168,7 +167,7 @@ class PlayerBody extends StatelessWidget {
                       color: Colors.black.withOpacity(0.80),
                       colorBlendMode: BlendMode.darken,
                     )
-                ), onPressed: () => print('Album Art pressed'),
+                )
               ),
             ),
             Row(
