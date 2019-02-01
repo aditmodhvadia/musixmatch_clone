@@ -92,7 +92,7 @@ class _repeatShuffleState extends State<repeatShuffle> {
     return Row(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(14.0),
+          padding: const EdgeInsets.only(left: 24.0, top: 8.0),
           child: InkWell(
             child: Text(repeat,
                 style: TextStyle(
@@ -118,7 +118,7 @@ class _repeatShuffleState extends State<repeatShuffle> {
         ),
         Expanded(child: Container()),
         Padding(
-          padding: const EdgeInsets.all(14.0),
+          padding: const EdgeInsets.only(right: 24.0, top: 8.0),
           child: InkWell(
             onTap: () {
               setState(() {
@@ -152,45 +152,20 @@ class PlayerBody extends StatelessWidget {
       children: <Widget>[
         //image
 
-        Stack(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(6.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15.0),
-                child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height/2 +50.0,
-                    child: Image.asset(
-                      'lib/assets/album_art.png',
-                      fit: BoxFit.fill,
-                      color: Colors.black.withOpacity(0.80),
-                      colorBlendMode: BlendMode.darken,
-                    )
-                )
-              ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(6.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'lib/assets/album_art.png',
+                fit: BoxFit.cover,
+                gaplessPlayback: true,
+                color: Colors.black.withOpacity(0.80),
+                colorBlendMode: BlendMode.darken,
+              )
             ),
-            Row(
-              children: <Widget>[
-                Expanded(child: Container()),
-                Padding(
-                  padding: const EdgeInsets.only(right: 22.0, top: 14.0),
-                  child: RaisedButton(
-                    color: Colors.white,
-                    elevation: 2.0,
-                    shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
-                    onPressed: () => print('Party button'),
-                    child: Row(
-                      children: <Widget>[
-                        Icon(Icons.add_circle, color: Colors.purple, size: 24.0,),
-                        Padding(padding: EdgeInsets.only(left: 2.0, right: 2.0)),
-                        Text('Party', style: TextStyle(color: Colors.purple, fontSize: 16.0),),
-                      ],
-                    ),),
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
 
         //repeat and shuffle
@@ -209,12 +184,36 @@ class PlayerBody extends StatelessWidget {
             ],
           ),
         ),
-
-        Expanded(child: Container()),
-
+//        Expanded(child: Container()),
         //Player buttons
 
         new PlayerButtons()
+      ],
+    );
+  }
+}
+
+class PartyButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Expanded(child: Container()),
+        Padding(
+          padding: const EdgeInsets.only(right: 22.0, top: 14.0),
+          child: RaisedButton(
+            color: Colors.white,
+            elevation: 2.0,
+            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(20.0)),
+            onPressed: () => print('Party button'),
+            child: Row(
+              children: <Widget>[
+                Icon(Icons.add_circle, color: Colors.purple, size: 24.0,),
+                Padding(padding: EdgeInsets.only(left: 2.0, right: 2.0)),
+                Text('Party', style: TextStyle(color: Colors.purple, fontSize: 16.0),),
+              ],
+            ),),
+        ),
       ],
     );
   }
@@ -231,7 +230,7 @@ class _seekBarState extends State<seekBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(10.0),
       child: Slider(
         value: _value,
         activeColor: Colors.black,
